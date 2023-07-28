@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Display the content of the file /etc/passwd
+IFS=':'
+while read -r I1 I2 I3 I4 I5 I6 I7
+do
+	echo "The user $I1 is part of the $I4 gang,"\
+		"lives in $I6 and rides $I7. $I3's place"\
+		"is protected by the passcode $I2, more info"\
+		"about the user here: $I5"
+done < /etc/passwd
