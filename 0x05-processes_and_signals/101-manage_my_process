@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 #Manage manage_my_process
+PFILE=/var/run/my_process.pid
 start_s()
 {
 	./manage_my_process &
-	echo $! > /var/run/my_process.pid
+	echo "$!" > "PFILE"
 	echo "manage_my_process started"
 }
 stop_s()
 {
 	pid_file="/var/run/my_process.pid"
-	if [ -f "$pid_file" ]
+	if [ -f "$PFILE" ]
 	then
-		pid=$(cat "$pid_file")
-		pkill "$pid"
-		rm "$pid_file"
+		pid=$(cat "$PFILE")
+		pkill -15 "$pid"
+		rm "$PFILE"
 		echo "manage_my_process stopped"
 	else
 		echo "manage_my_process is not running"
