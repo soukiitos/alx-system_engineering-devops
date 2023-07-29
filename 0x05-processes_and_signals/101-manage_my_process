@@ -1,40 +1,30 @@
 #!/usr/bin/env bash
 #Manage manage_my_process
 PFILE=/var/run/my_process.pid
-start_s()
+start()
 {
 	./manage_my_process &
-	echo "$!" > "PFILE"
-	echo "manage_my_process started"
+	echo "$!" > "$PFILE"
 }
-stop_s()
+stop()
 {
-	pid_file="/var/run/my_process.pid"
-	if [ -f "$PFILE" ]
-	then
-		pid=$(cat "$PFILE")
-		pkill -15 "$pid"
-		rm "$PFILE"
-		echo "manage_my_process stopped"
-	else
-		echo "manage_my_process is not running"
-	fi
+	sudo pkill -15 "$(cat "$PFILE")" && rm -f "$PFILE"
 }
 case "$1" in
 	start)
-		start_s
+		start
+		echo "manage_my_process started"
 		;;
 	stop)
-		stop_s
+		stop
+		echo "manage_my_process stopped"
 		;;
 	restart)
-		stop_s
-		start_s
+		stop
+		start
 		echo "manage_my_process restarted"
 		;;
 	*)
-		echo "Usage: $0 {start|stop|restart}"
-		exit 1
-		;;
+		echo "Usage: manage_my_process {start|stop|restart}"
 esac
 exit 0
