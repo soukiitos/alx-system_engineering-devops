@@ -5,5 +5,5 @@ exec { 'killmenow':
   path        => ['/bin', '/usr/bin'],
   refreshonly => true,
   provider    => 'shell',
-  returns     => [0, '1'],
+  returns     => [0, 1],
 }
