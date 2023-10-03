@@ -27,9 +27,9 @@ file {'/etc/nginx/sites-enabled/default':
     server {
       listen 80 default_server;
       listen [::]:80 default_server;
-      add_header X-Served-By $hostname;
+      add_header X-Served-By $HOSTNAME;
       root /var/www/html;
-      index index.html;
+      index index.html index.htm;
       location /redirect_me {
         return https://www.github.com/soukiitos permanent;
 }
