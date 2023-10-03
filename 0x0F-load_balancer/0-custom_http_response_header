@@ -9,7 +9,8 @@ sudo apt-get install -y nginx
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Perform a redirection
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/soukiitos permanent;"
+string_for_replacement='server_name _;
+  rewrite ^/redirect_me https://github.com/soukiitos permanent;'
 sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # 404 error page
@@ -18,7 +19,7 @@ string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\
 sudo sed -i "s#listen 80 default_server;#$string_for_replacement#" /etc/nginx/sites-enabled/default
 
 # HTTP response header
-sudo sed -i "server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+sudo sed -i 'server_name _/a add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-enabled/defailt
 
 # Test syntax errors
 sudo nginx -t
