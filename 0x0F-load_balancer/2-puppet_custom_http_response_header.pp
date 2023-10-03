@@ -8,6 +8,15 @@ package { 'nginx':
 }
 
 # Create nginx custom configuration file
+file { '/var/www/html':
+  ensure => directory,
+}
+
+file { 'var/www/html/index.html':
+  ensure  => present,
+    content => 'Hello World!',
+}
+
 file { '/etc/nginx/sites-enabled':
   ensure => directory,
 }
@@ -31,14 +40,6 @@ file {'/etc/nginx/sites-enabled/default':
 }
 }
 ',
-}
-file { '/var/www/html':
-  ensure => directory,
-}
-
-file { '/var/www/html/index.html':
-  ensure  => present,
-    content => 'Hello World!',
 }
 service { 'nginx':
   ensure  => running,
