@@ -12,7 +12,7 @@ file { '/etc/nginx/sites-enabled':
   ensure => directory,
 }
 
-file {'etc/nginx/sites-enabled/default':
+file {'/etc/nginx/sites-enabled/default':
   ensure  => present,
   content => '
     server {
@@ -36,12 +36,12 @@ file { '/var/www/html':
   ensure => directory,
 }
 
-file { 'var/www/html/index.html':
+file { '/var/www/html/index.html':
   ensure  => present,
     content => 'Hello World!',
 }
 service { 'nginx':
   ensure  => running,
-  enablr  => true,
+  enable  => true,
   require => File['/etc/nginx/sites-enabled/default'],
 }
