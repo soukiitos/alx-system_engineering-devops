@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Configuration for keeping our Ubuntu container’s Nginx installation from listening on port 80
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# Restart nginx
+sudo service nginx restart
