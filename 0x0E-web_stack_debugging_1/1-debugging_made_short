@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# we must do as the task 0 and terminate the first nginx pid
-
+# Test
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-# Restart nginx
 sudo service nginx restart
-kill "$(pgrep 'nginx' | head -1)"
+rm /run/nginx.pid
