@@ -4,5 +4,4 @@
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 # Restart nginx
 sudo service nginx restart
-# Terminate the first nginx pid
 rm /run/nginx.pid
