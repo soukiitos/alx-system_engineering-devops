@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # We must do the same as the task 0 and we'll terminate the first nginx pid
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-# Restart ninx
 sudo service nginx restart
 rm /run/nginx.pid
