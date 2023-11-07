@@ -14,7 +14,7 @@ def recurse(subreddit, hot_list=[]):
     global after
     headers = {"User-Agent": "KiitosUserAgent/1.0"}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    params = {"after": after}
+    params = {'after': after}
     response = requests.get(
             url, params=params, headers=headers, allow_redirects=False
             )
