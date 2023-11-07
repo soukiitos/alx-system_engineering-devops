@@ -12,8 +12,8 @@ def recurse(subreddit, hot_list=[]):
     of all hot articles for a given subreddit
     """
     global after
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {"User-Agent": "KiitosUserAgent/1.0"}
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     params = {"after": after}
     response = requests.get(
             url, params=params, headers=headers, allow_redirects=False
@@ -28,4 +28,4 @@ def recurse(subreddit, hot_list=[]):
             hot_list.append(data_title.get("data").get("title"))
         return hot_list
     else:
-        return None
+        return (None)
