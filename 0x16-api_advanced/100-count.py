@@ -3,7 +3,6 @@
 Queries the Reddit API
 """
 import requests
-import json
 
 
 def count_words(subreddit, word_list, after="", words_count=[]):
@@ -38,7 +37,7 @@ def count_words(subreddit, word_list, after="", words_count=[]):
                 for j in range(i, len(word_list)):
                     if (
                             words_count[j] > words_count[i] or
-                            (word_list[i] < word_list[j] and
+                            (word_list[i] > word_list[j] and
                                 words_count[j] == words_count[i])
                             ):
                         da_ta = words_count[i]
