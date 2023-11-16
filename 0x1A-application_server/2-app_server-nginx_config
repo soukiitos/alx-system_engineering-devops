@@ -1,8 +1,14 @@
 server {
   listen 80 default_server;
   listen [::]:80 default_server;
-  server_name 100.26.249.88
+
+  # IP as domain name
+  server_name 100.26.249.88;
+
+  # http response header
   add_header X_Served_By 368598-web-01;
+
+  # serve /airbnb-onepage/ on Airbnb_clone_v3
   location = /airbnb-onepage/ {
     proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
   }
