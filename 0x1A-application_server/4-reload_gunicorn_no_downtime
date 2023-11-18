@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Reload gunicorn
 
-sudo kill -HUP "$(pgrep -o gunicorn)"
+kill -HUP "$(pgrep -o gunicorn)"
